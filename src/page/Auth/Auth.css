@@ -1,0 +1,13 @@
+.authContainer{
+    background-image: url("https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728_1280.jpg");
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+}
+
+.bgBlur{
+    backdrop-filter: blur(10px)
+}
