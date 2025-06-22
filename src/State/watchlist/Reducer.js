@@ -27,7 +27,9 @@ const watchlistReducer = (state = initialState, action) => {
       };
     case types.ADD_COIN_TO_WATCHLIST_SUCCESS:
       let updatedItems = existInWatchlist(state.items, action.payload)
-        ? state.items.filter((item) => item.id != action.payload.id)
+        ? state.items.filter((item) => {
+            item.id != action.payload.id;
+          })
         : [action.payload, ...state.items];
       return {
         ...state,

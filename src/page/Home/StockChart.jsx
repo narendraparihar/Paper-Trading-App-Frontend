@@ -34,9 +34,20 @@ const StockChart = (coinId) => {
     },
   ];
   const [activeLabel, setActiveLabel] = useState(timeSeries[0]);
+  const transformKlineData = (rawData) => {
+    return rawData.map((item) => ({
+      x: new Date(item[0]), // timestamp
+      y: [
+        parseFloat(item[1]), // open
+        parseFloat(item[2]), // high
+        parseFloat(item[3]), // low
+        parseFloat(item[4]), // close
+      ],
+    }));
+  };
   const searies = [
     {
-      data: coin.marketChart.data,
+      data: transformKlineData(coin.marketChart.data),
     },
   ];
   const options = {
@@ -86,7 +97,6 @@ const StockChart = (coinId) => {
   const handleActiveLabel = (value) => {
     setActiveLabel(value);
   };
-  console.log(activeLabel.value);
   useEffect(() => {
     dispatch(
       fetchMarketChart({
@@ -95,7 +105,7 @@ const StockChart = (coinId) => {
         jwt: localStorage.getItem("jwt"),
       })
     );
-  }, [dispatch, activeLabel]);
+  }, [activeLabel]);
   return (
     <div>
       <div className="space-x-3">

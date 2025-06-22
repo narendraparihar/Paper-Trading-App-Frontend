@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 const TopupForm = () => {
   const [amount, setAmount] = useState();
-  const [paymentMethod, setPaymentMethod] = useState("RAZOPAY");
+  const [paymentMethod, setPaymentMethod] = useState("RAZORPAY");
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -39,7 +39,7 @@ const TopupForm = () => {
         />
       </div>
       <div>
-        <h1 className="pb-1">Select Payment Method</h1>
+        <h1 className="pb-1 justify-content-center">Select Payment Method</h1>
         <RadioGroup
           className="flex"
           defaultValue="RAZORPAY"
@@ -61,7 +61,7 @@ const TopupForm = () => {
               </div>
             </Label>
           </div>
-          <div className="flex items-center space-x-2 border p-3 px-5 rounded-md">
+          {/* <div className="flex items-center space-x-2 border p-3 px-5 rounded-md">
             <RadioGroupItem
               icon={DotFilledIcon}
               className="h-9 w-9"
@@ -77,7 +77,7 @@ const TopupForm = () => {
                 />
               </div>
             </Label>
-          </div>
+          </div> */}
         </RadioGroup>
       </div>
       <Button

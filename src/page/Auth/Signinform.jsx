@@ -29,7 +29,6 @@ const Signupform = () => {
   });
   const onSubmit = (data) => {
     dispatch(login({ data, navigate }));
-    console.log(data);
   };
 
   return (

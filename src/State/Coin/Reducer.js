@@ -49,6 +49,7 @@ const coinReducer = (state = initialState, action) => {
       };
 
     case FETCH_COIN_LIST_SUCCESS:
+      console.log(action, "action in coin list");
       return {
         ...state,
         coinList: action.payload,
@@ -60,7 +61,7 @@ const coinReducer = (state = initialState, action) => {
     case FETCH_MARKET_CHART_SUCCESS:
       return {
         ...state,
-        marketChart: { data: action.payload.prices, loading: false },
+        marketChart: { data: action.payload, loading: false },
         error: null,
       };
     // case FETCH_COIN_BY_ID_SUCCESS:
@@ -78,6 +79,7 @@ const coinReducer = (state = initialState, action) => {
         error: null,
       };
     case FETCH_COIN_DETAILS_SUCCESS:
+      console.log(action, "action in coin details");
       return {
         ...state,
         coinDetails: action.payload,

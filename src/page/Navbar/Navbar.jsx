@@ -16,10 +16,10 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sidebar } from "./Sidebar";
 import { useSelector } from "react-redux";
-import { store } from "@/State/Store";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { auth } = useSelector((store) => store);
-
+  const navigate = useNavigate();
   return (
     <div className="px-2 py-3 border-b z-50 bg-gray-900 text-white sticky top-0 left-0 right-0 flex justify-between items-center">
       <div className="flex items-center gap-3">
@@ -49,15 +49,20 @@ const Navbar = () => {
             <Sidebar />
           </SheetContent>
         </Sheet>
-        <p className="text-sm lg:text-base cursor-pointer">Safe Trade</p>
-        <div className="p-0 ml-9">
+        <p
+          className="text-sm lg:text-base cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          Safe Trade
+        </p>
+        {/* <div className="p-0 ml-9">
           <Button variant="outline" className="flex items-center gap-3">
             <MagnifyingGlassIcon />
             <span>Search</span>
           </Button>
-        </div>
+        </div> */}
       </div>
-      <div className="text-2xl">
+      <div className="text-2xl" onClick={() => navigate("/profile")}>
         <Avatar>
           <AvatarFallback>
             {auth.user?.fullName?.[0].toUpperCase() || "K"}

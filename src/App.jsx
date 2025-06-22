@@ -14,19 +14,27 @@ import SearchCoin from "./page/Search/SearchCoin";
 import NotFound from "./page/NotFound/NotFound";
 import Auth from "./page/Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUser } from "./State/Auth/Action";
+import { Loader } from "lucide-react";
 function App() {
   const { auth } = useSelector((store) => store);
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(true);
+
+  const loadUSerData = async () => {
+    await dispatch(getUser(auth.jwt || localStorage.getItem("jwt")));
+    setLoader(false);
+  };
 
   useEffect(() => {
-    dispatch(getUser(auth.jwt || localStorage.getItem("jwt")));
-  }, [auth.jwt]);
-  console.log(auth);
+    loadUSerData();
+  }, [auth.jwt, loader]);
   return (
     <>
-      {auth.user ? (
+      {loader ? (
+        <Loader className="w-10 h-10 "></Loader>
+      ) : auth.user ? (
         <div>
           <Navbar />
           <Routes>

@@ -15,25 +15,49 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
-const AccountVerificationForm = () => {
+
+import { API_BASE_URL } from "@/config/api";
+const AccountVerificationForm = (auth) => {
   const [otp, setOtp] = useState();
+  const [message, setMessage] = useState();
   const handleSubmit = () => {
     console.log(otp);
+  };
+
+  const sendOTP = async () => {
+    try {
+      // const res = await axios.post(
+      //   API_BASE_URL + "/api/user/verification/EMAIL/send-otp",
+      //   {},
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      //     },
+      //   }
+      // );
+      // console.log(res);
+      // setIsOTPSent(true);
+      // setMessage("OTP sent to your registered email.");
+    } catch (err) {
+      setMessage("Failed to send OTP. Try again.", err);
+    }
   };
 
   return (
     <div className="flex justify-center">
       <div className="flex justify-between items-center">
         <p>Email :</p>
-        <p>Knight@king.com</p>
+        <p>{auth.auth.user?.email}</p>
         <Dialog>
           <DialogTrigger>
-            <Button>Send OTP</Button>
+            <Button onClick={sendOTP}>Send OTP</Button>
           </DialogTrigger>
           <DialogContent className="bg-black text-white ">
             <DialogHeader>
-              <DialogTitle className="text-center">Enter OTP</DialogTitle>
-              <div className="py-5 flex gap-10 justify-center items-center">
+              <DialogTitle className="text-center">
+                2FA will be added soon...
+              </DialogTitle>
+              {/* <div className="py-5 flex gap-10 justify-center items-center">
                 <InputOTP
                   maxLength={6}
                   onChange={(value) => setOtp(value)}
@@ -56,7 +80,7 @@ const AccountVerificationForm = () => {
                     submit
                   </Button>
                 </DialogClose>
-              </div>
+              </div> */}
             </DialogHeader>
           </DialogContent>
         </Dialog>

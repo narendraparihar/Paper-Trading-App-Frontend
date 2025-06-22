@@ -30,25 +30,27 @@ const PaymentDetails = () => {
     <div className="px-20">
       <h1 className="text-3xl font-bold py-10">Payment Details</h1>
       {withdrawal.paymentDetails ? (
-        <Card>
+        <Card className="border border-gray-200 shadow-md rounded-xl p-4 bg-gray-100">
           <CardHeader>
-            <CardTitle>SBI Bank</CardTitle>
-            <CardDescription>
-              {withdrawal.paymentDetails.accountNumber}
+            <CardTitle className="text-lg font-semibold text-blue-700">
+              🏦 SBI Bank
+            </CardTitle>
+            <CardDescription className="text-gray-500">
+              A/C No: {withdrawal.paymentDetails.accountNumber}
             </CardDescription>
           </CardHeader>
-          <CardContent>
+
+          <CardContent className="space-y-3 mt-2">
             <div className="flex items-center">
-              <p className="w-32">A/C Holder</p>
-              <p className="text-gray-400">
-                : {withdrawal.paymentDetails.accountHolderName}
+              <p className="w-32 font-medium text-gray-700">A/C Holder</p>
+              <p className="text-gray-600">
+                {withdrawal.paymentDetails.accountHolderName}
               </p>
             </div>
+
             <div className="flex items-center">
-              <p className="w-32">IFSC</p>
-              <p className="text-gray-400">
-                : {withdrawal.paymentDetails?.ifsc}
-              </p>
+              <p className="w-32 font-medium text-gray-700">IFSC</p>
+              <p className="text-gray-600">{withdrawal.paymentDetails.ifsc}</p>
             </div>
           </CardContent>
         </Card>

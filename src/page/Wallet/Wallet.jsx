@@ -11,6 +11,7 @@ import { ReloadIcon, UpdateIcon, WidthIcon } from "@radix-ui/react-icons";
 import {
   CopyIcon,
   DollarSign,
+  DollarSignIcon,
   ShuffleIcon,
   UploadIcon,
   WalletIcon,
@@ -83,7 +84,7 @@ const Wallet = () => {
           </CardHeader>
           <CardContent>
             <div className="flex items-center">
-              <DollarSign />
+              <DollarSignIcon />
               <span className="text-2xl font-semibold">
                 {wallet.userWallet.balance}
               </span>
@@ -151,7 +152,7 @@ const Wallet = () => {
             </div>
           </CardContent>
         </Card>
-        <div className="py-5 pt-10">
+        {/* <div className="py-5 pt-10">
           <div className="flex gap-2 items-center pb-5">
             <h1 className="text-2xl font-semibold">History</h1>
             <UpdateIcon className="h-7 w-7 p-0 cursor-pointer hover:text-gray-400"></UpdateIcon>
@@ -178,7 +179,7 @@ const Wallet = () => {
               </div>
             </Card>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
